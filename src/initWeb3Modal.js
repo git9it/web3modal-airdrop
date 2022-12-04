@@ -7,7 +7,8 @@ import { chain, configureChains, createClient } from 'wagmi';
 
 export default function initWeb3Modal() {
   //Defining chains
-  const chains = [chain.mainnet, chain.goerli, chain.sepolia];
+  console.log(chain)
+  const chains = [chain.goerli];
 
   // Wagmi client
   const { provider } = configureChains(chains, [

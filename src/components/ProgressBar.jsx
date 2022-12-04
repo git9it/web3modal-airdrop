@@ -4,7 +4,7 @@ function ProgressBar({ percentage, type, className, ...otherProps }) {
   return (
     <div
       {...otherProps}
-      className={`${className} w-full h-[15px] rounded-lg shadow-inner overflow-hidden bg-gray-300`}
+      className={`${className} w-2/3  h-[15px] rounded-lg shadow-inner overflow-hidden bg-gray-300  lg:w-full`}
     >
       {(() => {
         switch (type) {

@@ -1,13 +1,10 @@
-import { useState } from 'react';
 import squadcenter from '../squad-center.png';
 import { ethers } from 'ethers';
-import { useSigner } from 'wagmi';
-import ProgressBar from './ProgressBar';
+import { useSigner, useAccount } from 'wagmi';
 import Countdown from './Countdown';
 
 function Main() {
-  const [progressPercentage, setProgressPercentage] = useState(25);
-
+  const { isDisconnected } = useAccount();
   const abi = [
     'function claimRank(uint256 term) external',
     'function claimMintReward() external',
@@ -20,17 +17,16 @@ function Main() {
     signer
   );
 
-  const clickHander = () => {};
   return (
-    <section className="flex justify-around mt-20">
-      <div className="flex shrink-0">
+    <section className="flex flex-col justify-around mt-20 lg:flex-row">
+      <div className="flex ml-10 shrink-0">
         <img
           className="w-[360px] h-[360px] rounded-2xl"
           src={squadcenter}
           alt=""
         />
       </div>
-      <div className="flex flex-col ml-10">
+      <div className="flex flex-col mt-5 ml-10 lg:mt-0">
         <h2 className="text-xl text-blue-300 ">Airdrop for</h2>
         <h1 className="text-4xl text-white ">APTOS</h1>
         <p className="text-left text-white">
@@ -52,8 +48,7 @@ function Main() {
             className="absolute top-0 h-4 rounded shim-blue"
           ></div>
         </div>
-        <Countdown/>
-        
+        <Countdown contract={contract} isDisconnected={isDisconnected} />
       </div>
     </section>
   );
